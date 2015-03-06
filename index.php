@@ -11,6 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <h1> Bonjour </h1>
+        <h2> Nico est une petite salope.</h2>
         <?php
         // put your code here
         ?>
