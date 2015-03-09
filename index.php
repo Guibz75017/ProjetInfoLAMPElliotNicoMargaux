@@ -36,8 +36,27 @@ and open the template in the editor.
                 </ul>
             </nav>
         </header>
-        <?php
-        // put your code here
-        ?>
+      <?php
+// on se connecte à notre base
+$base = mysql_connect ('localhost', 'login', 'pass');
+mysql_select_db ('Sites Energetiues', $base) ;
+?>
+
+<?php
+// lancement de la requete
+$sql = 'SELECT Position FROM Sites WHERE Nom = "Sainte-Seine Labbaye"';
+
+// on lance la requête (mysql_query) et on impose un message d'erreur si la requête ne se passe pas bien (or die)
+$req = mysql_query($sql) or die('Erreur SQL !<br />'.$sql.'<br />'.mysql_error());
+
+// on recupere le resultat sous forme d'un tableau
+$data = mysql_fetch_array($req);
+
+// on libère l'espace mémoire alloué pour cette interrogation de la base
+mysql_free_result ($req);
+mysql_close ();
+?>
+La position de Sainte-Seine L'Abbaye est :<br />
+<?php echo $data['Position']; ?>
     </body>
 </html>
